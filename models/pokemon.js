@@ -11,7 +11,7 @@ const Pokemon = sequelize.define('pokemon', {
 	stock: {
 		type: DataType.INTEGER,
 		allowNull: true,
-		defaultValue: 0
+		defaultValue: 1
 	}
  });
     return Pokemon
