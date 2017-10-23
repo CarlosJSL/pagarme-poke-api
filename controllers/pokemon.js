@@ -15,6 +15,7 @@ class PokemonController {
   }
 
   buy(){
-      
+
   }
+  
 }
