@@ -1,15 +1,15 @@
 export default(sequelize, DataType) => {
 const Pokemon = sequelize.define('pokemon', {
 	name: {
-		type: Sequelize.STRING,
+		type: DataType.STRING,
 		allowNull: false
 	},
 	price: {
-		type: Sequelize.DOUBLE,
+		type: DataType.DOUBLE,
 		allowNull: false
 	},
 	stock: {
-		type: Sequelize.INTEGER,
+		type: DataType.INTEGER,
 		allowNull: true,
 		defaultValue: 0
 	}

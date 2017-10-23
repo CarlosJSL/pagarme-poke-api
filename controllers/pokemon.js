@@ -7,7 +7,7 @@ class PokemonController {
   }
 
   getAll(req,res){
-
+    
   }
 
   create(req,res){
@@ -19,3 +19,4 @@ class PokemonController {
   }
 
 }
+export default PokemonController

@@ -1,5 +1,6 @@
 import express from 'express'
 import bodyParser from 'body-parser'
+import morgan from 'morgan'
 import request from  'request-promise'
 import config from './config/config' 
 import datasource from './config/datasource'

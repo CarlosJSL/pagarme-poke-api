@@ -1,7 +1,7 @@
 import PokemonController from '../controllers/pokemon'
 
 export default (app) => {
-  const pokemonController = new PokemonController(app.datasource.models.pokemon)
+  const pokemonController = new PokemonController(app.datasource.models.Pokemon)
 
   app.route('/api/get-pokemons')
      .get((req, res) => pokemonController.getAll(req,res))
