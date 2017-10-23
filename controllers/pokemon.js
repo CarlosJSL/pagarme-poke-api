@@ -1,9 +1,9 @@
-import HttpStatus from 'http-status';
+import HttpStatus from 'http-status'
 
 class PokemonController {
 
   constructor(Pokemon) {
-    this.pokemon = Pokemon;
+    this.pokemon = Pokemon
   }
 
   getAll(req,res){
@@ -14,8 +14,8 @@ class PokemonController {
 
   }
 
-  buy(){
+  buy(req,res){
 
   }
-  
+
 }

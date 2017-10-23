@@ -1,5 +1,5 @@
 import app from './index'
 
-app.listen(3000, function () {
-	console.log('Listening on http://localhost:3000');
+app.listen(app.get('port'), function () {
+	console.log(`app is running ${app.get('port')}`);
 });
