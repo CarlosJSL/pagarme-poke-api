@@ -2,35 +2,11 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import request from  'request-promise'
 
+const app = express()
 
-const app = express();
+app.use(bodyParser.json())
+app.use(morgan('tiny'))
 
-
-app.use(bodyParser.json());
-
-app.listen(3000, function () {
-	console.log('Listening on http://localhost:3000');
-});
-
-var Pokemon = sequelize.define('pokemon', {
-	name: {
-		type: Sequelize.STRING,
-		allowNull: false
-	},
-	price: {
-		type: Sequelize.INTEGER,
-		allowNull: false
-	},
-	stock: {
-		type: Sequelize.INTEGER,
-		allowNull: true,
-		defaultValue: 1
-	}
-});
-
-Pokemon.sync({force: true}).then(function () {
-	console.log('Model is ready!');
-});
 
 app.get('/get-pokemons', function (req, res) {
 	Pokemon.findAll()
