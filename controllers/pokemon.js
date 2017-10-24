@@ -6,7 +6,7 @@ class PokemonController {
     this.Pokemon = Pokemon
   }
 
-  getAll(req,res){
+  getAll(res){
     
   }
 

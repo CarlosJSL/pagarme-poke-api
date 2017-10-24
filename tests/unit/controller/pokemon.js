@@ -10,8 +10,21 @@ describe('Controllers: Pokemon',() => {
         "stock": 1
     }
 
-    const defaultRequest = {
-        params: {}
+    const listOfPokemons =[{
+        "name": "Default pokemon",
+        "price": 2.2,
+        "stock": 1
+    }]
+
+    const response = {
+        status: function (code) {
+            this.httpcode = code
+            return this
+        },
+        send: function(json) {
+             this.body = json
+             return this
+        }
     }
 
     describe('Cadastrar pokemon: create()',() => {
@@ -29,17 +42,6 @@ describe('Controllers: Pokemon',() => {
 
             class fakePokemon  {
                  static create() {}
-            }
-
-            const response = {
-                status: function (code) {
-                    this.httpcode = code
-                    return this
-                },
-                send: function(json) {
-                     this.body = json
-                     return this
-                }
             }
 
             const createStub = sinon.stub(fakePokemon, 'create');  
@@ -60,5 +62,20 @@ describe('Controllers: Pokemon',() => {
                 })
         })
     })
-    
+
+    describe('Lista todos os pokemons: getAll()',() => {
+        it('Deve listar todos os pokemons', () => {
+
+            const findAllStub = sinon.stub(fakePokemon, 'findAll');  
+            findAllStub.withArgs(response).resolves(listOfPokemons);
+            
+            const pokemonController = new PokemonController(fakePokemon)
+            
+            return pokemonController.getAll(response)
+                .then((result) => {
+                    console.log(result)
+
+                })
+        })
+    })
 })
