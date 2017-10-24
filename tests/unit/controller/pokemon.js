@@ -4,11 +4,11 @@ import Pokemon from '../../../models/pokemon'
 
 describe('Controllers: Pokemon',() => {
     
-    const defaultPokemon = [{
-            name: 'Default pokemon',
-            price: 2.2,
-            stock: 1
-        }]
+    const defaultPokemon = {
+        "name": "Default pokemon",
+        "price": 2.2,
+        "stock": 1
+    }
 
     const defaultRequest = {
         params: {}
@@ -16,29 +16,49 @@ describe('Controllers: Pokemon',() => {
 
     describe('Cadastrar pokemon: create()',() => {
         it('Deve cadastrar um pokemon', () => {
-            const requestWithBody = Object.assign({}, { body: defaultPokemon[0] }, defaultRequest);
+            const request = { body: defaultPokemon }
             
-            class fakePokemon {
-                static create() {}
+            const pokemonRegistered = {
+                "id": 1,
+                "name": "Default pokemon",
+                "price": 2.2,
+                "stock": 1,
+                "updatedAt": "2017-10-24T02:36:18.010Z",
+                "createdAt": "2017-10-24T02:36:18.010Z"
+            }
+
+            class fakePokemon  {
+                 static create() {}
             }
 
             const response = {
-                send: sinon.spy(),
-                status: sinon.stub()
+                status: function (code) {
+                    this.httpcode = code
+                    return this
+                },
+                send: function(json) {
+                     this.body = json
+                     return this
+                }
             }
 
-            response.status.withArgs(201).resolves(response)
-            sinon.stub(fakePokemon.prototype, 'create').withArgs(requestWithBody).resolves(response);
+            const createStub = sinon.stub(fakePokemon, 'create');  
+            createStub.withArgs(request).resolves(pokemonRegistered);
             
-
             const pokemonController = new PokemonController(fakePokemon)
             
-            return pokemonController.register(requestWithBody, response)
-                .then(() => {
-                   
-                     //sinon.assert.calledWith(response.send);
-                })
+            return pokemonController.register(request,response)
+                .then((result) => {
+                    
+                    sinon.assert.match(result.body.id,1) 
+                    sinon.assert.match(result.body.name,'Default pokemon') 
+                    sinon.assert.match(result.body.price,2.2) 
+                    sinon.assert.match(result.body.stock,1) 
+                    sinon.assert.match(result.body.updatedAt,'2017-10-24T02:36:18.010Z') 
+                    sinon.assert.match(result.body.createdAt,'2017-10-24T02:36:18.010Z') 
 
+                })
         })
     })
+    
 })

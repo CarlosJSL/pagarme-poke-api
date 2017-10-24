@@ -3,7 +3,7 @@ import HttpStatus from 'http-status'
 class PokemonController {
 
   constructor(Pokemon) {
-    this.pokemon = Pokemon
+    this.Pokemon = Pokemon
   }
 
   getAll(req,res){
@@ -11,10 +11,9 @@ class PokemonController {
   }
 
   register(req,res){
-
-      return this.pokemon.create(req.body)
-                .then((pokemon) => {return res.status(201)
-                                    .send(pokemon)})
+      
+      return this.Pokemon.create(req)
+                .then((result) => res.status(201).send(result))
                 .catch(err => err)
   }
 
