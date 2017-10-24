@@ -7,7 +7,7 @@ export default (app) => {
      .get((req, res) => pokemonController.getAll(req,res))
     
   app.route('/api/create-pokemons')
-     .post((req, res) => pokemonController.create(req,res))
+     .post((req, res) => pokemonController.register(req,res))
 
   app.route('/api/buy-pokemons')
      .post((req, res) => pokemonController.buy(req,res))

@@ -10,8 +10,12 @@ class PokemonController {
     
   }
 
-  create(req,res){
+  register(req,res){
 
+      return this.pokemon.create(req.body)
+                .then((pokemon) => {return res.status(201)
+                                    .send(pokemon)})
+                .catch(err => err)
   }
 
   buy(req,res){
