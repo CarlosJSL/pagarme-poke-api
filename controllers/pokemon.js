@@ -7,15 +7,16 @@ class PokemonController {
   }
 
   getAll(res){
+    
     return this.Pokemon.findAll()
-               .then((result) => res.status(201).send(result))
+               .then((result) => res.status(HttpStatus.OK).send(result))
                .catch(err => err)
   }
 
   register(req,res){
       
       return this.Pokemon.create(req)
-                 .then((result) => res.status(201).send(result))
+                 .then((result) => res.status(HttpStatus.CREATED).send(result))
                  .catch(err => err)
   }
 

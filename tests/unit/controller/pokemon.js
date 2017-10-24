@@ -16,21 +16,22 @@ describe('Controllers: Pokemon',() => {
         "stock": 1
     }]
 
-    const response = {
-        status: function (code) {
-            this.httpcode = code
-            return this
-        },
-        send: function(json) {
-             this.body = json
-             return this
-        }
-    }
 
     describe('Cadastrar pokemon: create()',() => {
         it('Deve cadastrar um pokemon', () => {
             const request = { body: defaultPokemon }
             
+            const response = {
+                status: function (code) {
+                    this.httpcode = code
+                    return this
+                },
+                send: function(json) {
+                     this.body = json
+                     return this
+                }
+            }
+
             const pokemonRegistered = {
                 "id": 1,
                 "name": "Default pokemon",
@@ -66,15 +67,30 @@ describe('Controllers: Pokemon',() => {
     describe('Lista todos os pokemons: getAll()',() => {
         it('Deve listar todos os pokemons', () => {
 
+            const response = {
+                status: function (code) {
+                    this.httpcode = code
+                    return this
+                },
+                send: function(json) {
+                     this.body = json
+                     return this
+                }
+            }
+
+            class fakePokemon  {
+                static findAll() {}
+           }
+
+           
             const findAllStub = sinon.stub(fakePokemon, 'findAll');  
-            findAllStub.withArgs(response).resolves(listOfPokemons);
+            findAllStub.withArgs().resolves(listOfPokemons);
             
             const pokemonController = new PokemonController(fakePokemon)
             
             return pokemonController.getAll(response)
                 .then((result) => {
-                    console.log(result)
-
+                    sinon.assert.match(result.body.length, 1)
                 })
         })
     })
