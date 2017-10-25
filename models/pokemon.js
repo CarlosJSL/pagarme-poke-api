@@ -5,7 +5,7 @@ const Pokemon = sequelize.define('pokemon', {
 		allowNull: false
 	},
 	price: {
-		type: DataType.DOUBLE,
+		type: DataType.INTEGER,
 		allowNull: false
 	},
 	stock: {
