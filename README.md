@@ -1,5 +1,5 @@
-<p align="left">
-  <img src="https://www.fscommerce.com.br/wp-content/uploads/2017/04/pagar.me-logo-e1493158015139.png" width="300" height="300"/>
+<p align="center">
+  <img src="https://pagamento-me.s3.amazonaws.com/wp-content/uploads/2014/05/pagar.me_.jpg" width="400" height="400"/>
 </p>
 
 # Pagarme 
