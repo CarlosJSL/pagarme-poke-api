@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://pagamento-me.s3.amazonaws.com/wp-content/uploads/2014/05/pagar.me_.jpg" width="400" height="400"/>
+  <img src="https://pagamento-me.s3.amazonaws.com/wp-content/uploads/2014/05/pagar.me_.jpg" width="900" height="400"/>
 </p>
 
 # Pagarme 
