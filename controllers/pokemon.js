@@ -35,7 +35,7 @@ class PokemonController {
           // 	.then((result) => {
           // 		res.send(result);
           // 	})
-          res.status(201).send("CADASTRADO")
+          res.status(201).send("Compra feita com sucesso!")
         }
       })
       .catch((err) => res.status(err.response).send(err.response))
