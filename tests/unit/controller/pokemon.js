@@ -31,32 +31,34 @@ describe('Controllers: Pokemon', () => {
         },
       }
 
-      const pokemonRegistered = {
+      const pokemonRegistered = [{
         id: 1,
         name: 'Default pokemon',
         price: 2.2,
         stock: 1,
         updatedAt: '2017-10-24T02:36:18.010Z',
         createdAt: '2017-10-24T02:36:18.010Z',
-      }
+      },true]
 
       class fakePokemon {
-        static create() {}
+        static findOrCreate() {}
       }
 
-      const createStub = sinon.stub(fakePokemon, 'create')
-      createStub.withArgs(request).resolves(pokemonRegistered)
+      const findOrCreateStub = sinon.stub(fakePokemon, 'findOrCreate')
+      findOrCreateStub.withArgs({where:{name:request.body.name},
+        defaults: { name: request.body.name, price: request.body.price }}).resolves(pokemonRegistered)
 
       const pokemonController = new PokemonController(fakePokemon)
 
       return pokemonController.register(request, response)
         .then((result) => {
-          sinon.assert.match(result.body.id, 1)
-          sinon.assert.match(result.body.name, 'Default pokemon')
-          sinon.assert.match(result.body.price, 2.2)
-          sinon.assert.match(result.body.stock, 1)
-          sinon.assert.match(result.body.updatedAt, '2017-10-24T02:36:18.010Z')
-          sinon.assert.match(result.body.createdAt, '2017-10-24T02:36:18.010Z')
+  
+          sinon.assert.match(result.body[0].id, 1)
+          sinon.assert.match(result.body[0].name, 'Default pokemon')
+          sinon.assert.match(result.body[0].price, 2.2)
+          sinon.assert.match(result.body[0].stock, 1)
+          sinon.assert.match(result.body[0].updatedAt, '2017-10-24T02:36:18.010Z')
+          sinon.assert.match(result.body[0].createdAt, '2017-10-24T02:36:18.010Z')
         })
     })
   })

@@ -10,17 +10,17 @@ export default(sequelize, DataType) => {
     price: {
       type: DataType.INTEGER,
       allowNull: false,
-      isNumeric:{
+      isNumeric: {
         msg: 'O preço só pode conter números',
-      }
+      },
     },
     stock: {
       type: DataType.INTEGER,
       allowNull: true,
       defaultValue: 1,
-      isNumeric:{
+      isNumeric: {
         msg: 'O estoque só pode conter números',
-      }
+      },
     },
   })
   return Pokemon
