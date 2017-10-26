@@ -4,5 +4,6 @@ export default {
   password: null,
   params: {
     dialect: 'sqlite',
+    storage: 'pagarme.sqlite'
   },
 }
