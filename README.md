@@ -48,12 +48,16 @@ Refactoring da API  para venda de Pokemons
 
 ## Rodando localmente
 
-
-Você primeiramente precisará instalar o SQLite3 
+Você primeiramente deve adquirir uma api_key se cadastrando no site da pagarme para ter acesso a api. 
+Após isso, basta adicionar sua chave no arquivo utils.js 
 
 ```sh
-> sudo add-apt-repository ppa:jonathonf/backports
-> sudo apt-get update && sudo apt-get install sqlite3
+	api_key: 'sua_chave', <<< adicionar sua chave nesse campo
+	card_number: '4024007138010896',
+	card_expiration_date: '1050',
+	card_holder_name: 'Ash Ketchum',
+	card_cvv: '123',
+	amount: pokemon.price * quantity * 100,
 ```
 
 Depois fazer o download do NodeJs
@@ -64,7 +68,7 @@ Depois fazer o download do NodeJs
 
 Clonar o projeto
 ```sh
-> git clone https://gitlab.com/carlosjsl95/survivorProject.git
+> git clone https://github.com/CarlosJSL/pagarme-poke-api.git
 ```
 
 Instalar as dependências do projeto
@@ -74,11 +78,17 @@ Instalar as dependências do projeto
 
 E por fim, rodar o projeto localmente
 ```
-> npm start (pasta server)
+> npm start 
 ```
 
 Então acesse `http://localhost:3000/api/{endpoint_name}` para ter acesso a API REST
 
+
+## Build
+Através do webpack voce pode minificar o seu projeto em um só arquivo
+```
+> npm run build
+```
 
 ## Testes
 Voce pode rodar os testes com o seguinte comando
