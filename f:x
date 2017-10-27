@@ -1,0 +1,43 @@
+
+> pokemon@1.0.0 lint /home/carlos/Desktop/pagarme-poke-api
+> eslint '**/*.js'
+
+
+/home/carlos/Desktop/pagarme-poke-api/config/datasource.js
+  29:5  error  Parsing error: Unexpected token )
+
+/home/carlos/Desktop/pagarme-poke-api/controllers/pokemon.js
+  32:9  error  Parsing error: Unexpected token buy
+
+/home/carlos/Desktop/pagarme-poke-api/index.js
+  4:8   error  'request' is defined but never used                                               no-unused-vars
+  6:24  error  Parse errors in imported module './config/datasource': Unexpected token ) (29:5)  import/no-named-as-default
+  6:24  error  Parse errors in imported module './config/datasource': Unexpected token ) (29:5)  import/no-named-as-default-member
+
+/home/carlos/Desktop/pagarme-poke-api/routes/pokemon.js
+  1:31  error  Parse errors in imported module '../controllers/pokemon': Unexpected token buy (32:9)  import/no-named-as-default
+  1:31  error  Parse errors in imported module '../controllers/pokemon': Unexpected token buy (32:9)  import/no-named-as-default-member
+
+/home/carlos/Desktop/pagarme-poke-api/server.js
+  4:3  warning  Unexpected console statement  no-console
+
+/home/carlos/Desktop/pagarme-poke-api/tests/unit/controller/pokemon.js
+   2:31  error  Parse errors in imported module '../../../controllers/pokemon': Unexpected token buy (32:9)  import/no-named-as-default
+   2:31  error  Parse errors in imported module '../../../controllers/pokemon': Unexpected token buy (32:9)  import/no-named-as-default-member
+   3:8   error  'Pokemon' is defined but never used                                                          no-unused-vars
+  41:8   error  A space is required after ','                                                                comma-spacing
+  48:33  error  A space is required after '{'                                                                object-curly-spacing
+  48:33  error  Expected a line break after this opening brace                                               object-curly-newline
+  48:40  error  Missing space before value for key 'where'                                                   key-spacing
+  48:40  error  A space is required after '{'                                                                object-curly-spacing
+  48:46  error  Missing space before value for key 'name'                                                    key-spacing
+  48:63  error  A space is required before '}'                                                               object-curly-spacing
+  49:1   error  Line 49 exceeds the maximum line length of 100                                               max-len
+  49:73  error  A space is required before '}'                                                               object-curly-spacing
+  49:73  error  Expected a line break before this closing brace                                              object-curly-newline
+  54:27  error  Block must not be padded by blank lines                                                      padded-blocks
+  55:1   error  Trailing spaces not allowed                                                                  no-trailing-spaces
+
+✖ 23 problems (22 errors, 1 warning)
+  11 errors, 0 warnings potentially fixable with the `--fix` option.
+

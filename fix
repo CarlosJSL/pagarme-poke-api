@@ -1,0 +1,4 @@
+
+> pokemon@1.0.0 lint /home/carlos/Desktop/pagarme-poke-api
+> eslint '**/*.js'
+

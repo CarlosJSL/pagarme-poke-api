@@ -38,21 +38,22 @@ describe('Controllers: Pokemon', () => {
         stock: 1,
         updatedAt: '2017-10-24T02:36:18.010Z',
         createdAt: '2017-10-24T02:36:18.010Z',
-      },true]
+      }, true]
 
       class fakePokemon {
         static findOrCreate() {}
       }
 
       const findOrCreateStub = sinon.stub(fakePokemon, 'findOrCreate')
-      findOrCreateStub.withArgs({where:{name:request.body.name},
-        defaults: { name: request.body.name, price: request.body.price }}).resolves(pokemonRegistered)
+      findOrCreateStub.withArgs({
+        where: { name: request.body.name },
+        defaults: { name: request.body.name, price: request.body.price },
+      }).resolves(pokemonRegistered)
 
       const pokemonController = new PokemonController(fakePokemon)
 
       return pokemonController.register(request, response)
         .then((result) => {
-  
           sinon.assert.match(result.body[0].id, 1)
           sinon.assert.match(result.body[0].name, 'Default pokemon')
           sinon.assert.match(result.body[0].price, 2.2)
